@@ -8,6 +8,9 @@ Created on Mon Nov 11 17:25:17 2019
 from torchvision import datasets
 
 class TrainImageFolder(datasets.ImageFolder):
+    """
+    Returns a dataset class that loads image, labels and path to image
+    """
     def __getitem__(self, index):
         path, target = self.imgs[index]
         img = self.loader(path)

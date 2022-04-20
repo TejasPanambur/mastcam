@@ -2,7 +2,7 @@
 #SBATCH -o results/cmdout/texture_triplet_150Reg.out
 #SBATCH -e results/cmderr/texture_triplet_150Reg.err
 
-DIR="/local/P128CURSL/"
+DIR="/data/P128CURSL/train/"
 ARCH="texres18"
 LR=0.0001
 WD=-5
@@ -14,10 +14,6 @@ EMBPATH="results/MastCam/texture/embeddings/rawEmbeds/"
 Clustering="Kmeans"
 CP="results/MastCam/texture/checkpoints/checkpoint.pth.tar" 
 MODE="Triplet"
-#"TripletLossXBM""MSloss" 
-#GTOS39 GTOSmob31 Minc23 dtd47
-MARGIN=0.05
-RAD=0.8
 WORKPATH="results/MastCam/texture/"
 NITER=20
 mkdir -p ${EXP}
@@ -27,4 +23,4 @@ echo "This is MastCam dataset with texture architecture, triplet loss and kmeans
 
 CUDA_VISIBLE_DEVICES=0,1,2,3 python3 texture_main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
  --lr ${LR} --wd ${WD} --k ${K} --batch ${BATCH} --verbose --workers ${WORKERS} \
- --margin ${MARGIN} --mode ${MODE} --workpath ${WORKPATH} --niter ${NITER} --EC ${EC} --clustering ${Clustering} --rad ${RAD} --resume ${CP} --st_xbm ${ST_XBM} --epochs 100
+ --margin ${MARGIN} --mode ${MODE} --workpath ${WORKPATH} --niter ${NITER} --clustering ${Clustering}  --resume ${CP}  --epochs 100

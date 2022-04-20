@@ -8,7 +8,17 @@ import torch.nn.functional as F
 
 
 def tripletFit(loader, model, loss_fn, optimizer, metrics,epoch,args):
-    
+    """
+    Train the model with online triplet loss
+    Args:
+            dataloader (TrainImageFolder): Data loader
+            model (nn.Module): Texture Architecture
+            loss_fn: OnlineTripletLoss 
+            optimizer (torch.optim.SGD): optimizer for every parameters with True
+                                   requires_grad in model 
+            metrics: AverageNonzeroTripletsMetric
+            epoch (int)
+    """
     batch_time = AverageMeter()
     losses = AverageMeter()
     data_time = AverageMeter()
@@ -19,13 +29,12 @@ def tripletFit(loader, model, loss_fn, optimizer, metrics,epoch,args):
     total_acc_pos,total_acc_triplets,total_triplets = 0.0,0.0,0.0
     # switch to train mode
     model.train()
-
     end = time.time()
 
     for batch_idx, (data, target,true_lbl) in enumerate(loader):
 
         data_time.update(time.time() - end)
-
+        
         #Save Checkpoint
         n = len(loader) * epoch + batch_idx
        

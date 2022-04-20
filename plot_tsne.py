@@ -27,7 +27,7 @@ random.seed(0)
 col = np.array([[random.randrange(0, 255)/255, random.randrange(0, 255)/255, random.randrange(0,255)/255] for i in range(78)])
 print(col[0].shape)
 
-def load_model(resume,arch='inception_v1_1gpu'):
+def load_model(resume,arch='texres18'):
     model = models.__dict__[arch](sobel=False,bn=False)
     #fd = int(model.top_layer.weight.size()[1])
     #model.top_layer = None
@@ -99,13 +99,7 @@ def get_cmap(n, name='hsv'):
 ###Get the images and its transforms
 def get_npimg_transimg(imgpths):
     img_list = []
-    #print(imgpths)
-    #col = [(255, 51, 0),(0, 0, 255)]
-    #col = get_cmap(39)
-    #col = np.random.randint(255, size=(39, 3),dtype='uint8')
-    #random.seed(0)
-    #col = [(random.randrange(0, 255), random.randrange(0, 255), random.randrange(0,255)) for i in range(39)]
-    #print(col)
+
     for i, imgp in enumerate(imgpths):
         imgpth,c = imgp[0],imgp[1]
         #print(imgpth)
@@ -134,9 +128,6 @@ def getembeds(model,input_var,batch=32):
                 out[i:] = model(input_var[i:]).data.cpu().numpy()
     print(out.shape)
     return out
-
-
-
 
 ####Get TSNE
 def getTSNEembed(embed,ee=12.0,perp=40.0):
@@ -229,8 +220,6 @@ def compute():
     visualize_scatter(tsne_embed, lbls, respth+'e0_gtos_all_true_perp_90')
     #print(tsne_embed)
     #visualize_scatter_with_images(tsne_embed, img_list, respth+'gtos_all_0')
-
-
 
 #compute()
 

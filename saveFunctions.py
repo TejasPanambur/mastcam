@@ -4,7 +4,14 @@ from os import path
 import datetime 
 
 def SaveClusters(pths,lbls,epoch,workpath):
-   
+        """
+        Save the cluster labels for every epoch 
+        Args:
+            pths (list): list of image paths
+            lbls (list): list of labels for each image
+            epoch (int): current epoch
+            workpath (str): path to save the csv
+        """
         with open(workpath+'new_cluster.csv','w') as out:
             csv_out = csv.writer(out)
             csv_out.writerow(["ImageName",str(epoch)])
@@ -22,6 +29,14 @@ def SaveClusters(pths,lbls,epoch,workpath):
             ndf.to_csv(workpath+'clustered.csv',index = False) 
    
 def SaveEpochInfo(epoch,clustering_loss, loss, nmi,workpath):
+    """
+    Save losses,nmi for every epoch
+    Args:
+        clustering_loss (float): K-Means clustering loss 
+        loss (float): triplet loss
+        nmi (float): nmi at epoch t and epoch t-1
+        workpath (str): path to save the csv
+    """
     if not path.exists(workpath+'EpochResults.csv'):
         with open(workpath+'EpochResults.csv','w') as csvfile:
             csvwriter = csv.writer(csvfile)
@@ -34,6 +49,14 @@ def SaveEpochInfo(epoch,clustering_loss, loss, nmi,workpath):
 
 
 def saveNMIRecall(epoch,nmi,recall,acc,workpath):
+    """
+    Save nmi and recall for every epoch for a labelled dataset
+    Args:
+        epoch (int): current epoch
+        nmi (float): nmi at epoch t and true labels
+        recall (list): recall metrics for a labelled dataset
+        workpath (str): path to save the csv
+    """
     if not path.exists(workpath+'nmi_recall.csv'):
         with open(workpath+'nmi_recall.csv','w') as csvfile:
             csvwriter = csv.writer(csvfile)

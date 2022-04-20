@@ -1,9 +1,9 @@
+#Code modified from https://github.com/adambielski/siamese-triplet
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from itertools import combinations
 import numpy as np
-
 
 __metaclass__ = type
 
@@ -69,7 +69,6 @@ def RandomNegativeTripletSelector(margin, cpu=False):
      return FunctionNegativeTripletSelector(margin=margin,
                                             negative_selection_fn=random_hard_negative,
                                             cpu=cpu)
-
 
 
 class OnlineTripletLoss(nn.Module):

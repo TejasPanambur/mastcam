@@ -1,3 +1,4 @@
+#Code modified from https://github.com/adambielski/siamese-triplet
 import numpy as np
 
 class AverageNonzeroTripletsMetric:

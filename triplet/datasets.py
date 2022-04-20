@@ -1,11 +1,15 @@
 import numpy as np
 from torch.utils.data.sampler import BatchSampler
 
-
 class BalancedBatchSampler(BatchSampler):
     """
     BatchSampler - samples n_classes and within these classes samples n_samples.
-    Returns batches of size n_classes * n_samples
+    Each of the non-empty clusters are sampled uniformly to avoid trivial solution.
+    Args:
+        labels (list): lists of images indexes.
+        n_classes (int): number of clusters 
+        n_samples (int): number of samples per cluster
+    Returns batches of size n_classes * n_samples.
     """
 
     def __init__(self, labels, n_classes, n_samples):

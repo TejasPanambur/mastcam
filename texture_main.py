@@ -226,16 +226,15 @@ def objective(args):
         del loss
         torch.cuda.empty_cache()
 
-   
     return nmi
 
 def train(loader, model, opt, epoch,args):
     """Training of the model.
         Args:
-            loader (torch.utils.data.DataLoader): Data loader
-            model (nn.Module): CNN
+            loader (TrainImageFolder): Data loader
+            model (nn.Module): Texture Architecture
             opt (torch.optim.SGD): optimizer for every parameters with True
-                                   requires_grad in model except top layer
+                                   requires_grad in model 
             epoch (int)
     """
     
@@ -252,6 +251,13 @@ def train(loader, model, opt, epoch,args):
 
 
 def compute_features(dataloader, model, N,args):
+    """
+    Get the feature embedding
+    Args:
+            dataloader (TrainImageFolder): Data loader
+            model (nn.Module): Texture Architecture
+            N (int): Number of Images in dataset
+    """
     if args.verbose:
         print('Compute features')
     batch_time = AverageMeter()

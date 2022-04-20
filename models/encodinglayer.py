@@ -1,3 +1,4 @@
+
 import torch
 import torch.nn as nn
 from torch.nn import Module, Parameter
@@ -10,6 +11,16 @@ __all__ = ['View', 'Normalize', 'Encoding']
 class Encoding(Module):
     
     def __init__(self, D, K):
+        """
+        Encoding Layer: a learnable residual encoder.
+        It considers an input featuremaps with the shape of :math:`C\times H\times W`
+        as a set of C-dimentional input features :math:`X=\{x_1, ...x_N\}`, where N is total number
+        of features given by :math:`H\times W`, which learns an inherent codebook
+        
+        Args:
+            D: dimention of the features or feature channels
+            K: number of codeswords
+        """
         super(Encoding, self).__init__()
         # init codewords and smoothing factor
         self.D, self.K = D, K

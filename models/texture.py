@@ -5,6 +5,15 @@ from models.encodinglayer import Encoding, Normalize, View
 
 __all__ = ['TextureArch','texres18']
 class TextureArch(nn.Module):
+    """
+    This is an implementation of the paper 
+    "Deep Texture Manifold for Ground Terrain Recognition"
+    https://arxiv.org/pdf/1803.10896v2.pdf
+    Args:
+        nclass (int): dimension of final embedding layer. Default: 512
+        backbone (str): define the backbone CNN architecture. Default: resnet-18
+        pretrained (bool): pre-trained backbone CNN architecture Default: True
+    """
     def __init__(self, nclass, backbone,pretrained=True):
         super(TextureArch, self).__init__()
         self.backbone = backbone
@@ -56,5 +65,8 @@ class TextureArch(nn.Module):
         return x
     
 def texres18(pretrained=True, out=512):
+    """
+    Function to invoke the required texture architecture.
+    """
     model = TextureArch(out, 'resnet18',pretrained)
     return model

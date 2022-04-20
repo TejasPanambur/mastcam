@@ -7,6 +7,9 @@ from sklearn.metrics import confusion_matrix
 from plot_tsne import getTSNEembed,visualize_scatter
 
 def plotTSNE(embed,lbl,path,epoch,ps=None):
+     """
+        Produces a scatter plot TSNE
+     """
      path1 = path+'ee_12_p_50/'
      path2 = path+'ee_20_p_50/'
      path3 = path+'ee_200_p_60/'

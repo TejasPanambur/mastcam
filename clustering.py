@@ -209,7 +209,7 @@ class Kmeans(object):
 
         # cluster the data
         I,D, loss = run_kmeans(xb, self.k, verbose)
-        #self.I = I
+
         self.images_lists = [[] for i in range(self.k)]
         
         I = [int(n[0]) for n in I]
