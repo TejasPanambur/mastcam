@@ -6,11 +6,7 @@ In proceedings of CVPR-Earthvision 2022.
 
 Documentation under preparation.
 
-<object data="figures/rock_classifications_min.pdf" type="application/pdf" width="700px" height="400px">
-    <embed src="figures/rock_classifications_min.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="figures/rock_classifications_min.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+![Taxonomy of Geological Classes on Martian Terrain](figures/rock_classifications_min.jpg)
 
 If you want to cite the arXiv prepreint meanwhile, please use:
 
