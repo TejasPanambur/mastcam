@@ -6,6 +6,8 @@ In proceedings of CVPR-Earthvision 2022.
 
 Documentation under preparation.
 
+![Taxonomy of Geological classes of Martian Terrain](figures/rock_classifications_min.pdf)
+
 If you want to cite the arXiv prepreint meanwhile, please use:
 
 ```
